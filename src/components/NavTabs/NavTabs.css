@@ -1,0 +1,8 @@
+.nav-bar {
+    background: rgb(0, 166, 255);
+    min-height: 70px;
+    position: fixed;
+    width: 100%;
+    text-align: center;
+    color: white;
+}
