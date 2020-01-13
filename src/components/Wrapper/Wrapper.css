@@ -8,5 +8,7 @@
     align-content: flex-start;
     overflow: auto;
     margin: auto 200px;
-    background: none;
+
+    background-image: url('https://raw.githubusercontent.com/tmnguyen8/clicky-game/master/public/images/background.png');
+    background-repeat: repeat;
   }

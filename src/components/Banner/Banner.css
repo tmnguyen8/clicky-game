@@ -1,9 +1,9 @@
 .container {
-    background: black;
+    /* background: black;
     background-image: url('https://raw.githubusercontent.com/tmnguyen8/clicky-game/master/public/images/background.png');
-    background-repeat: repeat;
-    color: white;
-    padding: 180px 20px;
+    background-repeat: repeat; */
+    color: black;
+    padding: 100px 20px;
     text-align: center;
     display: block;
 }
