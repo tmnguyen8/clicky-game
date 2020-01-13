@@ -1,7 +1,8 @@
 .container {
     background: black;
+    background-image: url('https://raw.githubusercontent.com/tmnguyen8/clicky-game/master/public/images/background.png');
+    background-repeat: repeat;
     color: white;
-    min-height: 400px;
     padding: 180px 20px;
     text-align: center;
     display: block;

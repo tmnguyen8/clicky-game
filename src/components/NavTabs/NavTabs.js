@@ -11,11 +11,7 @@ function NavTabs (props) {
           <h2>{props.resultMessage}</h2>
         </div>
         <div className="col-4">
-          <div className="row">
-            <h2>Score = {props.score}</h2>
-            <h2> | </h2>
-            <h2>Total = {props.totalScore}</h2>
-          </div>
+            <h2>Score = {props.score} | Total = {props.totalScore}</h2>
         </div>  
       </div>
 
