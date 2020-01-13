@@ -6,13 +6,13 @@ import images from "./images.json"
 
 import ImageCard from "./components/ImageCard/ImageCard";
 import Wrapper from "./components/Wrapper/Wrapper";
-var originalImages = images;
 
 class App extends Component {
   // Setting this.state.images to the images json array
   state = {
     images: images,
-    count: 0
+    score: 0,
+    guessedArr: []
   };
 
   // Generating an array in random from 0-11
@@ -29,9 +29,28 @@ class App extends Component {
   }
 
   // Handle OnChange click
-  handleClick = () => {
-    this.setState({ images: this.displayRandomImage(this.state.images) });
-    
+  handleClick = event => {
+    const {alt} = event.target;
+
+    if (this.state.guessedArr.includes(parseInt(alt))){
+      console.log('you have guessed this already')
+    } else {
+      console.log("you have not guessed this yet")
+      var newGuessArr = this.state.guessedArr
+      newGuessArr.push(parseInt(alt))
+      console.log(newGuessArr.length)
+      this.setState({
+        score: newGuessArr.length,
+        guessedArr: newGuessArr
+      })
+      
+    }
+
+    this.setState({ 
+      images: this.displayRandomImage(this.state.images),
+    });    
+    console.log(this.state.score)
+    console.log(this.state.guessedArr)
   }
 
   // Map over this.state.images and render a ImageCard component for each image object
@@ -46,6 +65,7 @@ class App extends Component {
               <ImageCard 
                 id={image.id}
                 key={image.id}
+                alt={image.id}
                 image={image.image}
                 count={this.state.count}
                 handleClick={this.handleClick}
