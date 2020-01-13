@@ -1,45 +1,61 @@
-import React {Component} from "react";
+import React, {Component} from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import NavTabs from "./components/NavTabs";
 import Banner from "./components/Banner";
-import Images from "./images.json"
-// import React, { Component } from "react";
-// import FriendCard from "./components/FriendCard";
-// import Wrapper from "./components/Wrapper";
-// import Title from "./components/Title";
-// import friends from "./friends.json";
+import images from "./images.json"
+
+import ImageCard from "./components/ImageCard/ImageCard";
+import Wrapper from "./components/Wrapper/Wrapper";
+var originalImages = images;
 
 class App extends Component {
-  // Setting this.state.friends to the friends json array
+  // Setting this.state.images to the images json array
   state = {
-    friends
+    images: images,
+    count: 0
   };
 
-  removeFriend = id => {
-    // Filter this.state.friends for friends with an id not equal to the id being removed
-    const friends = this.state.friends.filter(friend => friend.id !== id);
-    // Set this.state.friends equal to the new friends array
-    this.setState({ friends });
-  };
+  // Generating an array in random from 0-11
+  displayRandomImage(originalArr) {
+    var randomArrIndex = [];
+    var randomArrResult = [];
+    while(randomArrIndex.length < 12){
+      var r = Math.floor(Math.random() * 12);
+      if(randomArrIndex.indexOf(r) === -1) randomArrIndex.push(r);
+    }
 
-  // Map over this.state.friends and render a FriendCard component for each friend object
+    randomArrIndex.map((index)=>randomArrResult.push(originalArr[index]))
+    return randomArrResult
+  }
+
+  // Handle OnChange click
+  handleClick = () => {
+    this.setState({ images: this.displayRandomImage(this.state.images) });
+    
+  }
+
+  // Map over this.state.images and render a ImageCard component for each image object
   render() {
     return (
-      <Wrapper>
-        <Title>Friends List</Title>
-        {this.state.friends.map(friend => (
-          <FriendCard
-            removeFriend={this.removeFriend}
-            id={friend.id}
-            key={friend.id}
-            name={friend.name}
-            image={friend.image}
-            occupation={friend.occupation}
-            location={friend.location}
-          />
-        ))}
-      </Wrapper>
-    );
+      <div>
+        <NavTabs />
+        <Banner />
+        <Wrapper>
+          {
+            this.state.images.map(image =>(
+              <ImageCard 
+                id={image.id}
+                key={image.id}
+                image={image.image}
+                count={this.state.count}
+                handleClick={this.handleClick}
+              />
+            ))
+          }
+
+        </Wrapper>
+      </div>
+    )
   }
 }
 
