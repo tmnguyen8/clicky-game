@@ -6,7 +6,7 @@
 This is a memory game using React. This project breaks the application's UI into components, manages the component state, and respond to user events.
 
 ## How is this repo useful?
-This is a great learning tool for jpx/javascript/React beginners to get acquainted with the following concepts:
+This is a great learning tool for jsx/javascript/React beginners to get acquainted with the following concepts:
 
 * Learn about React. 
     * [React](https://reactjs.org/)
